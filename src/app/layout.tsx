@@ -2,8 +2,7 @@ import Footer from "@/components/basic/footer"
 import Header from "@/components/basic/header"
 import type { Metadata } from 'next'
 
-// These styles apply to every route in the application
-import '../styles/globals.css'
+import './globals.css'
 import { Suspense } from "react"
 import Loading from "./loading"
 import { ToastContainer } from 'react-toastify';

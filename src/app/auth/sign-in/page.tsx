@@ -5,6 +5,9 @@ import React from "react"
 import * as yup from "yup"
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import Image from "next/image";
+import { signInApi } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -17,15 +20,24 @@ interface IFormInputs {
 }
 
 const SignIn = () => {
-    const { handleSubmit, control, reset } = useForm<IFormInputs>({
+    const router = useRouter()
+    const { handleSubmit, control } = useForm<IFormInputs>({
         resolver: yupResolver(schema)
     })
 
-    const onSubmit: SubmitHandler<IFormInputs> = (data) =>  {
-        console.log(data)
-        toast("Wow so easy!");
-    }
+    const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+        try {
+            const { email, password } = data
 
+            const res = await signInApi({ email, password })
+            if (res) {
+                toast("Log in successfully!")
+                router.push("/")
+            }
+        } catch (error) {
+            console.log({ error });
+        }
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -43,59 +55,59 @@ const SignIn = () => {
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                            <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Email address
+                        <div className="gap-2 flex flex-col">
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                Email address
+                            </label>
+                            <div className="mt-1">
+                                <Controller
+                                    name="email"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => <input id="email" type="email" autoComplete="email" required
+                                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                        placeholder="Enter your email address" {...field} />}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="gap-2 flex flex-col mt-4">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                Password
+                            </label>
+                            <div className="mt-1">
+                                <Controller
+                                    name="password"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => <input id="password" type="password" autoComplete="current-password" required
+                                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                        placeholder="Enter your password" {...field} />}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between py-4">
+                            <div className="flex items-center">
+                                <input id="remember_me" name="remember_me" type="checkbox"
+                                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                                <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
+                                    Remember me
                                 </label>
-                                <div className="mt-1">
-                                    <Controller
-                                        name="email"
-                                        control={control}
-                                        rules={{ required: true }}
-                                        render={({ field }) => <input id="email" type="email" autoComplete="email" required
-                                            className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                            placeholder="Enter your email address" {...field} />}
-                                    />
-                                </div>
                             </div>
 
-                            <div>
-                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                                    Password
-                                </label>
-                                <div className="mt-1">
-                                    <Controller
-                                        name="password"
-                                        control={control}
-                                        rules={{ required: true }}
-                                        render={({ field }) => <input id="password" type="password" autoComplete="current-password" required
-                                            className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                            placeholder="Enter your password" {...field} />}
-                                    />
-                                </div>
+                            <div className="text-sm">
+                                <a href="/auth/forgot-your-password" className="font-medium text-blue-600 hover:text-blue-500">
+                                    Forgot your password?
+                                </a>
                             </div>
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center">
-                                    <input id="remember_me" name="remember_me" type="checkbox"
-                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                                    <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-                                        Remember me
-                                    </label>
-                                </div>
+                        </div>
 
-                                <div className="text-sm">
-                                    <a href="/auth/forgot-your-password" className="font-medium text-blue-600 hover:text-blue-500">
-                                        Forgot your password?
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <button type="submit"
-                                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Sign in
-                                </button>
-                            </div>
+                        <div>
+                            <button type="submit"
+                                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Sign in
+                            </button>
+                        </div>
                         <div className="mt-6">
 
                             <div className="relative">
@@ -113,22 +125,22 @@ const SignIn = () => {
                                 <div>
                                     <a href="#"
                                         className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        <img className="h-5 w-5" src="https://www.svgrepo.com/show/512120/facebook-176.svg"
-                                            alt="" />
+                                        <Image src="https://www.svgrepo.com/show/512120/facebook-176.svg"
+                                            alt="" width="20" height="20" />
                                     </a>
                                 </div>
                                 <div>
                                     <a href="#"
                                         className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        <img className="h-5 w-5" src="https://www.svgrepo.com/show/513008/twitter-154.svg"
-                                            alt="" />
+                                        <Image src="https://www.svgrepo.com/show/513008/twitter-154.svg"
+                                            alt="" width="20" height="20" />
                                     </a>
                                 </div>
                                 <div>
                                     <a href="#"
                                         className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                        <img className="h-6 w-6" src="https://www.svgrepo.com/show/506498/google.svg"
-                                            alt="" />
+                                        <Image src="https://www.svgrepo.com/show/506498/google.svg"
+                                            alt="" width="24" height="24" />
                                     </a>
                                 </div>
                             </div>
