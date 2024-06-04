@@ -1,5 +1,5 @@
-import Footer from "@/components/basic/footer"
-import Header from "@/components/basic/header"
+import Footer from "@/components/common/layout/footer"
+import Header from "@/components/common/layout/header"
 import type { Metadata } from 'next'
 
 import './globals.css'
@@ -18,15 +18,20 @@ type MainLayoutProps = {
 }
 
 export default function RootLayout({ children }: MainLayoutProps) {
+  
   return (
     <html lang="en">
       <body>
-        <Header />
         <Suspense fallback={<Loading />}>
-          {children}
+          <Header />
+          <div className="container mx-auto">
+            <div className={`mt-[96px]`}>
+              {children}
+            </div>
+            <Footer />
+          </div>
           <ToastContainer />
         </Suspense>
-        <Footer />
       </body>
     </html>
   )
