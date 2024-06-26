@@ -33,7 +33,7 @@ const NewsLetter = () => {
         <h1 className="text-heading">
           Newsletter
         </h1>
-        <p className="text-gray">
+        <p className="text-gray-800">
           Get timely updates from your favorite products
         </p>
       </div>

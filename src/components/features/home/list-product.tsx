@@ -1,6 +1,6 @@
 'use client'
 
-import { Product } from "@/utils/types/home"
+import { Product } from "../../../../types/home"
 import ProductCard from "./product-card"
 
 const ListProduct = () => {

@@ -9,10 +9,10 @@ const Social = () => {
             <h1 className="text-heading-slider">
               Our Social
             </h1>
-            <p className="text-description text-gray">
+            <p className="text-description text-gray-800">
               Follow our store on Instagram
             </p>
-            <Link href="#" className="text-description font-bold border-b-[2px] border-dark-200 w-[fit-content] hover:border-yellow hover:text-yellow ease-in-out duration-300">
+            <Link href="#" className="text-description font-bold border-b-[2px] border-slate-900 w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
               Follow us
             </Link>
           </div>

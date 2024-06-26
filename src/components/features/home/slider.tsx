@@ -1,5 +1,5 @@
 'use client'
-import { BannerImage } from "@/utils/types/home"
+import { BannerImage } from "../../../../types/home"
 import { useState } from "react"
 import { POSITION } from "./core/types"
 import Image from "next/image"
@@ -62,7 +62,7 @@ const Slider = () => {
             <h1 className="text-heading-slider">
               {headText}
             </h1>
-            <Link href="#" className="text-description font-bold border-b-[2px] border-dark-200 w-[fit-content] hover:border-yellow hover:text-yellow ease-in-out duration-300">
+            <Link href="#" className="text-description text-gray-800 font-bold border-b-[2px] border-slate-900 w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
               Shop now
             </Link>
           </div>
@@ -71,10 +71,10 @@ const Slider = () => {
       <div className="absolute my-auto left-[-50px] top-10 flex flex-col z-1">
         {datas.map(({ id }, index) => (
           <div className="flex py-[10px] gap-[5px] justify-start items-center cursor-pointer" key={id} onClick={() => handleSelectSlider(index)}>
-            <h3 className={`text-slider ${selectedSlider === index ? 'text-dark' : 'text-gray'}`}>
+            <h3 className={`text-slider ${selectedSlider === index ? 'text-slate-900 !font-semibold' : 'text-gray-800'}`}>
               {`0${index + 1}`}
             </h3>
-            <div className={`${selectedSlider === index ? "w-[50px]" : "w-[25px]"} ease-in-out duration-300 border-t-[2px] border-solid ${selectedSlider === index ? "border-dark" : "border-gray"}`}>
+            <div className={`${selectedSlider === index ? "w-[50px]" : "w-[25px]"} ease-in-out duration-300 border-t-[2px] border-solid ${selectedSlider === index ? "border-slate-900" : "border-gray-800"}`}>
             </div>
           </div>
         ))}

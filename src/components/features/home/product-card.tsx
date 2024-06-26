@@ -1,6 +1,6 @@
 'use client'
 
-import { Product } from "@/utils/types/home"
+import { Product } from "../../../../types/home"
 import Image from "next/image"
 import { CiShoppingCart } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";

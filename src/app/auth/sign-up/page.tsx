@@ -5,7 +5,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
-import { signUpApi } from '@/services/authService'
 import { useRouter } from 'next/navigation'
 
 const schema = yup.object().shape({
@@ -31,18 +30,8 @@ const SignUp = () => {
   })
 
   const onSubmit: SubmitHandler<IFormInputs> = async(data) => {
-    try {
     const { email, password, name, phoneNumber } = data
 
-    const res = await signUpApi({ email, password, name, phoneNumber })
-    if (res){
-      toast('Create user success!')
-      router.push('/auth/sign-in')
-    }
-    } catch (error) {
-      console.log({ error});
-      
-    }
   }
 
   return (

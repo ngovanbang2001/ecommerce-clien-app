@@ -1,4 +1,6 @@
+'use client'
 import axios, { AxiosRequestConfig } from 'axios'
+import { useRouter } from 'next/navigation'
 
 const config: AxiosRequestConfig = {
    baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
@@ -27,37 +29,38 @@ axiosInstance.interceptors.response.use(
    },
    async function (error) {
       const originalRequest = error?.config
+      const router = useRouter()
       if (error?.response?.status === 401 && !originalRequest?._retry) {
-         if (!error.response) {
+         try {
             await refreshToken()
+         } catch (error) {
+            router.push('/auth/sign-in')
          }
+      }
 
-         if (error.response.data && error.response.data.error) {
-            return Promise.reject(error.response.data.error)
-         }
+      if (error.response.status === 419) {
+         router.push('/auth/sign-in')
+      }
 
-         if (error.response.status === 401) {
-            return Promise.reject({
-               message: 'Unauthorized'
-            })
-         }
+      if (error.response.data && error.response.data.error) {
+         return Promise.reject(error.response.data.error)
+      }
 
-         if (error.response.status === 403) {
-            return Promise.reject({
-               message: 'Not Enough Permission'
-            })
-         }
-
-         if (error.response.status === 500) {
-            return Promise.reject({
-               message: 'Error From Server'
-            })
-         }
-
+      if (error.response.status === 403) {
          return Promise.reject({
-            message: 'Unhandled Error'
+            message: 'Not Enough Permission'
          })
       }
+
+      if (error.response.status === 500) {
+         return Promise.reject({
+            message: 'Error From Server'
+         })
+      }
+
+      return Promise.reject({
+         message: 'Unhandled Error'
+      })
    })
 
 export default axiosInstance

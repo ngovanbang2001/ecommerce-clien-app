@@ -1,7 +1,7 @@
 const typography = function ({ theme }: { theme: any }) {
   return {
     '.text-header': {
-      fontSize: theme('fontSize.base'),
+      fontSize: theme('fontSize.sm'),
       fontWeight: theme('fontWeight.semibold'),
       lineHeight: theme('lineHeight.6'),
       letterSpacing: theme('letterSpacing.widest'),

@@ -9,3 +9,21 @@
     font-family: "Open Sans", sans-serif;
   }
 }
+
+#sidebar-checkbox:checked ~ .sidebar{
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+#sidebar-checkbox:checked ~ .sidebar-label::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--sidebar-bg-color);
+  z-index: 1;
+}
+
+

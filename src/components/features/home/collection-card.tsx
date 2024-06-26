@@ -1,6 +1,6 @@
 'use client'
 
-import { CollectionData } from "@/utils/types/home"
+import { CollectionData } from "../../../../types/home"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -35,7 +35,7 @@ const CollectionCard = () => {
             <h1 className="text-heading-card">
               {title}
             </h1>
-            <Link href="#" className="text-description border-b-[1px] font-semibold border-dark w-[fit-content] hover:border-yellow hover:text-yellow ease-in-out duration-300">
+            <Link href="#" className="text-description border-b-[1px] font-semibold border-slate-900 w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
               View All
             </Link>
           </div>

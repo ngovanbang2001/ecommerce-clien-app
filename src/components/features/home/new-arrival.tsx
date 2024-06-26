@@ -15,7 +15,7 @@ const NewArrival = () => {
           <h1 className="text-heading-slider">
             lassical Decor
           </h1>
-          <Link href="#" className="px-[40px] py-[20px] hover:border-yellow hover:text-yellow  border-[2px] border-dark-200 mt-[30px] w-[fit-content] ease-in-out duration-300 text-lg font-semibold">
+          <Link href="#" className="px-[40px] py-[20px] hover:border-yellow-600 hover:text-yellow-600  border-[2px] border-slate-900 mt-[30px] w-[fit-content] ease-in-out duration-300 text-lg font-semibold">
             Order Now
           </Link>
         </div>

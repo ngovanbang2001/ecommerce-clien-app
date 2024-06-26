@@ -8,15 +8,6 @@ export default {
   ],
   theme: {
     extend: {},
-    colors: {
-      dark: {
-        200:'#080808',
-        400: '#111111'
-      },
-      active: '#929292',
-      gray: "#999",
-      yellow: '#cd8f5c'
-    },
     screens: {
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -49,6 +40,6 @@ export default {
   plugins: [
     plugin(function({ addUtilities, theme }) {
       addUtilities(newUtilities({ theme }))
-    })
+    }),
   ],
 };

@@ -1,4 +1,4 @@
-import { CollectionData } from "@/utils/types/home"
+import { CollectionData } from "../../../../types/home"
 import Link from "next/link"
 import { CiUser } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
@@ -42,16 +42,16 @@ const Blog = () => {
             <img className="object-contain group-hover:blur-sm ease-in-out duration-300" src={url} alt={alt} />
             <div className={`flex flex-col gap-[15px] py-[15px] px-[40px] items-center `}>
               <div className="flex flex-row gap-[8px] items-center">
-              <CiUser className="text-gray" />
-              <p className="text-sm text-gray">Bang</p>
-              <p className="text-sm text-gray">-</p>
-              <CiCalendarDate className="text-gray"/>
-              <p className="text-sm text-gray">April 15, 2024</p>
+              <CiUser className="text-gray-800" />
+              <p className="text-sm text-gray-800">Bang</p>
+              <p className="text-sm text-gray-800">-</p>
+              <CiCalendarDate className="text-gray-800"/>
+              <p className="text-sm text-gray-800">April 15, 2024</p>
               </div>
               <h1 className="text-heading-card">
                 {title}
               </h1>
-              <Link href="#" className="text-description py-[8px] border-b-[2px] font-semibold text-dark-200  w-[fit-content] hover:border-yellow hover:text-yellow ease-in-out duration-300">
+              <Link href="#" className="text-description py-[8px] border-b-[2px] border-slate-900 font-semibold text-slate-900  w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
                 Read more
               </Link>
             </div>
