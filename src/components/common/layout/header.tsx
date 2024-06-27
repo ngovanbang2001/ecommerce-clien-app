@@ -6,6 +6,8 @@ import { CiSearch } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { getInfoApi } from "@/services/userServices";
+import Image from "next/image";
+import { FaCircleUser } from "react-icons/fa6";
 
 type HeaderProps = {
 }
@@ -55,9 +57,15 @@ export default function Header({ }: HeaderProps) {
               </Link>
             </li>
             <li className="px-[20px] my-auto">
+              {data?.user ? (
+                <div className="flex justify-center items-end gap-[8px]">
+                  {data?.user?.avatar ?<FaCircleUser /> : <Image className="rounded-full" src={data?.user?.avatar} alt=""/>}
+                  <p>{data?.user?.name}</p>
+                </div>
+              ) : 
               <Link href="/auth/sign-in" className="text-header uppercase">
                 <CiUser size={25}/>
-              </Link>
+              </Link>}
             </li>
             <li className="px-[20px] my-auto">
               <Link href="/search" >

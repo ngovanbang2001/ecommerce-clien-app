@@ -1,38 +1,9 @@
-'use client'
-
 import React from 'react'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { toast } from 'react-toastify'
-import { useRouter } from 'next/navigation'
-
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(8).max(32).required(),
-  rePassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match').required(),
-  phoneNumber: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid').required()
-})
-
-interface IFormInputs {
-  name: string
-  email: string
-  password: string
-  rePassword: string
-  phoneNumber: string
-}
+import { Controller } from 'react-hook-form'
+import useSignUp from './hooks/useSignUp'
 
 const SignUp = () => {
-  const router = useRouter()
-  const { handleSubmit, control, formState: { errors }, } = useForm<IFormInputs>({
-    resolver: yupResolver(schema)
-  })
-
-  const onSubmit: SubmitHandler<IFormInputs> = async(data) => {
-    const { email, password, name, phoneNumber } = data
-
-  }
+  const { handleSubmit, control, onSubmit, } = useSignUp()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

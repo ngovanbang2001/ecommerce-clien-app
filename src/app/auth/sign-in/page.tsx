@@ -1,48 +1,10 @@
-'use client'
-import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
-import * as yup from 'yup'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import Image from 'next/image'
-import { toast } from 'react-toastify'
-import { useRouter } from 'next/navigation'
-import { useMutation } from '@tanstack/react-query'
-import { SignInRequest } from '../../../../types/auth'
-import { signInApi } from '@/services/authService'
-
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(8).max(32).required()
-})
-
-interface IFormInputs {
-  email: string
-  password: string
-}
+import useSignIn from './hooks/useSignIn'
 
 const SignIn = () => {
-  const router = useRouter()
-  const { handleSubmit, control } = useForm<IFormInputs>({
-    resolver: yupResolver(schema)
-  })
-  const { mutate } = useMutation({
-    mutationKey: ['save-config'],
-    mutationFn: async (args: SignInRequest) => {
-      await signInApi(args)
-    },
-    onError: () => {
-      toast.error('Something went wrong')
-    },
-    onSuccess: () => {
-      router.push(`/`)
-    },
-  })
-
-  const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
-
-    const { email, password } = data
-    mutate({ email, password })
-  }
+  const { handleSubmit, control, onSubmit, } = useSignIn()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
