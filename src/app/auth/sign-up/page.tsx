@@ -1,9 +1,10 @@
+"use client";
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import useSignUp from './hooks/useSignUp'
 
 const SignUp = () => {
-  const { handleSubmit, control, onSubmit, } = useSignUp()
+  const { handleSubmit, control, onSubmit, errors } = useSignUp()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

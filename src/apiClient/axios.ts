@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { useRouter } from 'next/navigation'
 
 const config: AxiosRequestConfig = {
-   baseURL: `${process.env.NEXT_PUBLIC_API_URL}/api`,
+   baseURL: `${process.env.NEXTAUTH_URL}/api`,
    withCredentials: true,
    headers: {
       Accept: 'application/json',

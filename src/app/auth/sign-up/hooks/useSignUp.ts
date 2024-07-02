@@ -1,7 +1,6 @@
 "use client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
 import { signUpApi } from "@/services/authService";
 import { SIGN_UP } from "@/lib/react-query/query-key/client";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -27,33 +26,22 @@ interface IFormInputs {
 const useSignUp = () => {
   const router = useRouter();
 
-  const { handleSubmit, control } = useForm<IFormInputs>({
+  const { handleSubmit, control, formState: { errors }
+  } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
 
-  const { mutate } = useMutation({
-    mutationKey: SIGN_UP,
-    mutationFn: async (args: SignUpRequest) => {
-      await signUpApi(args)
-    },
-    onError: () => {
-      toast.error('Something went wrong')
-    },
-    onSuccess: () => {
-      router.push(`/auth/sign-in`)
-    },
-  })
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     const { email, password, name, phoneNumber } = data;
 
-    mutate({ email, password, name, phoneNumber });
   };
 
   return {
     handleSubmit,
     control,
     onSubmit,
+    errors
   };
 };
 

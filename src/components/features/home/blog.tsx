@@ -1,4 +1,4 @@
-import { CollectionData } from "../../../../types/home"
+import { CollectionData } from "../../../../types/client/home"
 import Link from "next/link"
 import { CiUser } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";

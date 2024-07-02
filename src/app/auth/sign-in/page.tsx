@@ -1,10 +1,12 @@
+'use client'
+
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import Image from 'next/image'
 import useSignIn from './hooks/useSignIn'
 
 const SignIn = () => {
-  const { handleSubmit, control, onSubmit, } = useSignIn()
+  const { handleSubmit, control, onSubmit, errors } = useSignIn()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -42,6 +44,7 @@ const SignIn = () => {
                     />
                   )}
                 />
+                {errors.email?.message && <p className="text-sm text-red-700 my-1">{errors.email?.message}</p>}
               </div>
             </div>
 
@@ -66,6 +69,7 @@ const SignIn = () => {
                     />
                   )}
                 />
+                {errors.password?.message && <p className="text-sm text-red-700 my-1">{errors.password?.message}</p>}
               </div>
             </div>
             <div className="flex items-center justify-between py-4">

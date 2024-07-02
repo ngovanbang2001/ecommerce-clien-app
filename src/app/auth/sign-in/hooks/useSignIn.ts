@@ -1,7 +1,5 @@
-"use client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
 import { signInApi } from "@/services/authService";
 import { SIGN_IN } from "@/lib/react-query/query-key/client";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -22,33 +20,35 @@ interface IFormInputs {
 const useSignIn = () => {
   const router = useRouter();
   
-  const { handleSubmit, control } = useForm<IFormInputs>({
+  const { handleSubmit, control, formState: {  errors } } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
 
-  const { mutate } = useMutation({
-    mutationKey: SIGN_IN,
-    mutationFn: async (args: SignInRequest) => {
-      await signInApi(args);
-    },
-    onError: () => {
-      toast.error("Something went wrong");
-    },
-    onSuccess: () => {
-      router.push(`/`);
-    },
-  });
+  
+async function getProviders() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/providers`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch providers");
+  }
+
+  return res.json();
+}
+
+
+
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     const { email, password } = data;
-    mutate({ email, password });
+    const resp: ReturnType<typeof getProviders> = (await getProviders()) || {};
   };
 
   return {
     handleSubmit,
     control,
     onSubmit,
+    errors
   };
-};
+};  
 
 export default useSignIn;

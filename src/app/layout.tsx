@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import Loading from './loading'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Providers from '@/lib/react-query/provider'
+import { SessionProvider } from 'next-auth/react'
 
 export const metadata: Metadata = {
   title: 'E-commerce',
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: MainLayoutProps) {
     <html lang="en">
       <body>
         <Suspense fallback={<Loading />}>
-          <Providers>{children}</Providers>
+          <SessionProvider>{children}</SessionProvider>
           <ToastContainer />
         </Suspense>
       </body>
