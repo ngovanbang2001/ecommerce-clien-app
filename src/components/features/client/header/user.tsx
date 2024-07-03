@@ -1,6 +1,4 @@
 'use client'
-import { GET_USER } from "@/lib/react-query/query-key/client"
-import { getInfoApi } from "@/services/userServices"
 import Image from "next/image"
 import Link from "next/link"
 import { FaCircleUser } from "react-icons/fa6";

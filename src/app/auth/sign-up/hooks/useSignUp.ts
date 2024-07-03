@@ -1,12 +1,9 @@
-"use client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { signUpApi } from "@/services/authService";
-import { SIGN_UP } from "@/lib/react-query/query-key/client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import { SignUpRequest } from "../../../../../types/auth";
+import { signUp } from "../action";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -34,7 +31,9 @@ const useSignUp = () => {
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     const { email, password, name, phoneNumber } = data;
-
+    await signUp({ email, password, name, phoneNumber })
+    toast.success('Signed Up Successfully')
+    router.push('/auth/sign-in')
   };
 
   return {
