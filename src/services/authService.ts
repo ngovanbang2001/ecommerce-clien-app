@@ -1,4 +1,4 @@
-import axiosInstance from "@/apiClient/axios";
+import axiosInstance from "@/apiClient";
 import { SignInRequest, SignUpRequest } from "../../types/auth";
 
 export function signUpApi({email, password, name, phoneNumber }: SignUpRequest) {
