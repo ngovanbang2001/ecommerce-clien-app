@@ -7,13 +7,13 @@ export async function signIn(data: SignInRequest) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     next: { tags: ['sign-in'] }
   })
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
-
 
   return res
 }
