@@ -3,9 +3,10 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import Image from 'next/image'
-import useSignIn from './hooks/useSignIn'
+import useSignIn from './_hooks/useSignIn'
+import { getDictionary } from '@/dictionaries'
 
-const SignIn = () => {
+const SignIn = async({ params: { lang } }) => {
   const { handleSubmit, control, onSubmit, errors } = useSignIn()
 
   return (

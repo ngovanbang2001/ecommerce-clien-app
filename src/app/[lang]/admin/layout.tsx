@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
-import Loading from '../loading'
+import Loading from '../../loading'
 import Navbar from '@/components/features/admin/navbar'
 
 type AdminLayoutProps = {

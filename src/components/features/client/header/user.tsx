@@ -3,13 +3,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { FaCircleUser } from "react-icons/fa6";
 import { CiUser } from "react-icons/ci";
-
+import { useInfo } from "./_hooks/useInfo";
 
 type Props = {
 }
 
 const User = ({ }: Props)=> {
-  const data = {}
+  const { data } = useInfo()
   
   return data?.user ? (
       <Link href='/profile' className="flex justify-center items-end gap-[12px]">

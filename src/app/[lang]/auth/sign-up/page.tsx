@@ -1,9 +1,9 @@
 "use client";
 import React from 'react'
 import { Controller } from 'react-hook-form'
-import useSignUp from './hooks/useSignUp'
+import useSignUp from './_hooks/useSignUp'
 
-const SignUp = () => {
+const SignUp = ({ params: { lang } }) => {
   const { handleSubmit, control, onSubmit, errors } = useSignUp()
 
   return (

@@ -2,13 +2,15 @@
 'use client'
 import CommonBreadcrumb from '@/components/common/breadcumb/common-breadcrumb';
 import React from 'react'
-import useProfile from './hooks/useProfile';
+import useProfile from './_hooks/useProfile';
 import VerticalTab from '@/components/common/tabs/vertical-tabs';
 import { FaCircleUser } from "react-icons/fa6";
 import { IoIosSettings } from "react-icons/io";
-import { Tab } from '../../../../types/common';
+import { Tab } from '../../../../../types/common';
+import { getDictionary } from '@/dictionaries';
 
-const Page = () => {
+const Page = async({ params: { lang } }) => {
+  const dict = await getDictionary(lang)
   const { data } = useProfile()
 
   const tabs: Tab[] = [

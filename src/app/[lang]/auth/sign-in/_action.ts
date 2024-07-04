@@ -1,4 +1,4 @@
-import { SignInRequest } from "../../../../types/auth";
+import { SignInRequest } from "../../../../../types/auth";
 
 export async function signIn(data: SignInRequest) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sign-in`, {

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import { signUp } from "../action";
+import { signUp } from "../_action";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
