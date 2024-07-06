@@ -14,7 +14,7 @@ export default function Header({}: HeaderProps) {
             <li className="px-[22px] my-auto">
               <Link
                 href="/"
-                className="text-header py-2 uppercase border-b-[1px] border-black hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
+                className="text-header py-2 uppercase hover:border-b-[1px] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
               >
                 Home
               </Link>
@@ -22,7 +22,7 @@ export default function Header({}: HeaderProps) {
             <li className="px-[22px] my-auto">
               <Link
                 href="#"
-                className="text-header py-2 uppercase  border-b-[1px] border-black hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
+                className="text-header py-2 uppercase  hover:border-b-[1px] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
               >
                 Shop
               </Link>
@@ -30,7 +30,7 @@ export default function Header({}: HeaderProps) {
             <li className="px-[22px] my-auto">
               <Link
                 href="#"
-                className="text-header py-2 uppercase  border-b-[1px] border-black hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
+                className="text-header py-2 uppercase  hover:border-b-[1px] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
               >
                 About
               </Link>
