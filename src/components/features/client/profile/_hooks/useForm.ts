@@ -21,11 +21,15 @@ export const useForm = ({ user }: Props ) => {
         },
     })
 
+    console.log({ user });
+
+
     const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data)
 
     return {
         onSubmit,
         handleSubmit,
-        control
+        control,
+        reset
     }
 }

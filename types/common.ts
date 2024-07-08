@@ -15,10 +15,10 @@ export type User = {
   id: number
   name: string
   email: string
-  avatar: string | null
+  avatar?: string
   phoneNumber: string
   role: string
-  address: string | null
+  address?: string
   icon: React.ReactNode
   content:  React.ReactNode
 }

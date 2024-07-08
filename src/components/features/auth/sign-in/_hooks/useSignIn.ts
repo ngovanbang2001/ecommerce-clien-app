@@ -1,3 +1,4 @@
+'use client'
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
