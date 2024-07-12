@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { User } from "../../../../../../types/common";
 import { SubmitHandler, useForm as useReactForm } from "react-hook-form";
+import { updateProfile } from "../_action";
+import { toast } from "react-toastify";
 
 type Props = {
     user?: User
@@ -21,10 +23,10 @@ export const useForm = ({ user }: Props ) => {
         },
     })
 
-    console.log({ user });
-
-
-    const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<IFormInputs> = async(data) => {
+        await updateProfile(data)
+        toast.success("Update Profile successfully!");
+    }
 
     return {
         onSubmit,

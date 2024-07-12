@@ -1,4 +1,3 @@
-'use server'
 import { SignInRequest } from "../../../../../types/auth"
 
 export async function signIn(data: SignInRequest) {
