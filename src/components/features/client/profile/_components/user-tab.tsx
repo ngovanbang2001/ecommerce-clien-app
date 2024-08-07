@@ -1,7 +1,6 @@
 import { User } from '../../../../../../types/common'
 import { Controller } from 'react-hook-form'
 import { useForm } from '../_hooks/useForm'
-import { FaCircleUser } from 'react-icons/fa6'
 import Image from 'next/image'
 
 type Props = {
@@ -9,7 +8,7 @@ type Props = {
 }
 
 const UserTab = ({ user }: Props) => {
-  const { onSubmit, handleSubmit, control } = useForm({ user })
+  const { onSubmit, handleSubmit, control, handleChangeFile } = useForm({ user })
 
   return (
     <div className="grid grid-cols-4 gap-[18px]">
@@ -82,12 +81,17 @@ const UserTab = ({ user }: Props) => {
       <div className="flex items-center border-l-[2px] border-gray-200 px-4">
         <label
           htmlFor="uploadFile1"
-          className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
+          className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
         >
-          <Image src={user?.avatar || '/assets/img/no-profile.jpg'} alt="" />
-              Change avatar
-          <input type="file" id="uploadFile1" className="hidden" />
+          <div className="px-[30px] flex flex-col items-center justify-center h-full gap-[8px]">
+            <Image className="rounded-full" src={user?.avatar || '/assets/img/no-profile.jpg'} width={30} height={30} alt="" />
+            Change avatar
+            <input onChange={handleChangeFile} type="file" id="uploadFile1" className="hidden" />
+          </div>
         </label>
+        <button>
+          Upload
+        </button>
       </div>
     </div>
   )

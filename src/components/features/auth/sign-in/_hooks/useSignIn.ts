@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,24 +18,32 @@ interface IFormInputs {
 
 const useSignIn = () => {
   const router = useRouter();
-  
-  const { handleSubmit, control, formState: {  errors } } = useForm<IFormInputs>({
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     const { email, password } = data;
-    await signIn({ email , password })
-    toast.success("Logged in successfully!");
-    router.push('/')
+    try {
+      await signIn({ email, password });
+      toast.success("Logged in successfully!");
+      router.push("/");
+    } catch (error: any) {
+      toast.error(error?.message || "");
+    }
   };
 
   return {
     handleSubmit,
     control,
     onSubmit,
-    errors
+    errors,
   };
-};  
+};
 
 export default useSignIn;

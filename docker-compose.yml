@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  e-commerce:
+    container_name: e-commerce
+    image: e-commerce
+    build: .
+    ports:
+      - "3000:3000"

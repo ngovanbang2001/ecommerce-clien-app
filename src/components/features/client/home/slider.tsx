@@ -1,5 +1,5 @@
 'use client'
-import { BannerImage } from "../../../../types/client/home"
+import { BannerImage } from "../../../../../types/client/home"
 import { useState } from "react"
 import { POSITION } from "./core/types"
 import Image from "next/image"

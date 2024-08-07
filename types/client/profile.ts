@@ -1,5 +1,6 @@
 export type UpdateProfileRequest = {
-  name: string;
-  phoneNumber: string;
-  address: string;
+  name?: string;
+  phoneNumber?: string;
+  address?: string;
+  avatar?: string
 }

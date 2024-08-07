@@ -1,6 +1,6 @@
 'use client'
 
-import { CollectionData } from "../../../../types/client/home"
+import { CollectionData } from "../../../../../types/client/home"
 import Image from "next/image"
 import Link from "next/link"
 

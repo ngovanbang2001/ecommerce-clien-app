@@ -3,7 +3,7 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import useSignUp from './_hooks/useSignUp'
 
-const SignUp = ({ params: { lang } }) => {
+const SignUp = ({ params: { lang } }: { params: { lang: string } }) => {
   const { handleSubmit, control, onSubmit, errors } = useSignUp()
 
   return (

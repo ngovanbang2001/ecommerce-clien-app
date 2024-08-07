@@ -15,25 +15,26 @@ export const useInfo = () => {
                 next: { tags: ["get-info"] },
             });
 
-            const user = await res.json()
-            console.log({ user });
-            setUser(user)
+            const { user: userRes } = await res.json()
+            if(userRes) { 
+                setUser(userRes)
+            }
         }
-        catch (error) {
-            console.error(error)
+        catch (error: any) {
+            console.error(error?.message)
         }
     }
 
     const handleSignOut = async() => {
         try {
             await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sign-out`, {
-                method: "GET",
+                method: "POST",
                 credentials: 'include',
             });
         router.push('/auth/sign-in')
         }
-        catch (error) {
-            console.error(error)
+        catch (error: any) {
+            console.error(error?.message || "")
         }
     }
 

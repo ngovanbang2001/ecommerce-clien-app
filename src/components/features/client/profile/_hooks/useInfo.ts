@@ -12,11 +12,11 @@ export const useInfo = () => {
                 next: { tags: ["get-info"] },
             });
 
-            const user = await res.json()
+            const { user } = await res.json()
             setUser(user)
         }
-        catch (error) {
-            console.error(error)
+        catch (error: any) {
+            console.error(error?.message)
         }
     }
 

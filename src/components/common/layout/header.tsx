@@ -47,7 +47,7 @@ export default function Header({}: HeaderProps) {
         <div>
           <ul className="flex h-full">
             <li className="px-[20px] my-auto">
-              <Link href="#" className="text-header uppercase">
+              <Link href="/cart" className="text-header uppercase">
                 <CiShoppingCart size={25} />
               </Link>
             </li>

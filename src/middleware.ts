@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN } from '@/utils/constants'
+import { REFRESH_TOKEN, protectedRoutes } from '@/utils/constants'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
@@ -8,12 +8,18 @@ let defaultLocale = 'en'
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const token = request.cookies.get(REFRESH_TOKEN)?.value;
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  const token = request.cookies.get(ACCESS_TOKEN)
-  console.log({ token });
+  const isProtectRoute = protectedRoutes.some((route) => pathname.includes(route))
+  
+  if (isProtectRoute && !token) {
+    request.nextUrl.pathname = '/auth/sign-in'
+
+    return NextResponse.redirect(request.nextUrl)
+  }
 
   if (pathnameHasLocale) return
   request.nextUrl.pathname = `/${defaultLocale}/${pathname}`
@@ -22,7 +28,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
-}
+  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|logo.png|sw.js).*)']
+};
