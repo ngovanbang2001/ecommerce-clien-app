@@ -1,4 +1,4 @@
-import { NAVBAR_ADMIN } from '@/utils/constants'
+import { NAVBAR_ADMIN } from '@/utils/constants/common'
 import Link from 'next/link'
 
 const Navbar = () => {

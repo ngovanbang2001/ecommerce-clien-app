@@ -1,7 +1,6 @@
-'use client'
 import { useEffect, useState } from "react";
-import { User } from "../../../../../../types/common";
 import { useRouter } from "next/navigation";
+import { User } from "@/utils/types";
 
 export const useInfo = () => {
     const [user, setUser] = useState<User>()

@@ -1,5 +1,5 @@
 import axiosInstance from "@/apiClient";
-import { CreateCategoryRequest } from "../../../types/admin/category";
+import { CreateCategoryRequest } from "../../utils/types/admin/category";
 import { BASE_ADMIN_URL } from ".";
 
 export function createCategoryApi(formData: CreateCategoryRequest) {

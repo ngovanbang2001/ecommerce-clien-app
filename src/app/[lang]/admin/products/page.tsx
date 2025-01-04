@@ -1,6 +1,6 @@
 'use client'
 
-import useDialog from '@/hooks/common/useDialog'
+import useDialog from '@/hooks/useDialog'
 import Button from '@/components/common/button/button'
 import CreateProductDialog from '@/components/features/admin/products/create-product-dialog'
 import { AiFillDelete } from 'react-icons/ai'
@@ -9,6 +9,7 @@ import { IoIosAdd } from 'react-icons/io'
 
 const Products = () => {
   const { isOpen, handleOpenDialog, handleCloseDialog } = useDialog()
+  
   return (
     <div className="py-6">
       <div className="justify-end py-4 flex">

@@ -1,7 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
+import { FC } from "react"
 
-const Social = () => {
+type Props = {
+  dict: any
+}
+
+const Social: FC<Props> = ({ dict }) => {
   return (
         <div className={`xs:h-[360px] xl:h-[400px] relative`}>
           <Image className="ease-in-out duration-300 h-full !w-[100vw]" layout='fill' objectFit='cover' src="/assets/img/h1_banner-4.webp" alt="" />

@@ -1,4 +1,4 @@
-import { REFRESH_TOKEN, protectedRoutes } from '@/utils/constants'
+import { protectedRoutes, REFRESH_TOKEN } from '@/utils/constants/common'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 

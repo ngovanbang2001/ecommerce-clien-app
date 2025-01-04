@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { User } from "../../../../../../types/common";
 import { SubmitHandler, useForm as useReactForm } from "react-hook-form";
 import { updateProfile, uploadFile } from "../_action";
 import { toast } from "react-toastify";
+import { User } from "@/utils/types";
 
 type Props = {
     user?: User
@@ -18,10 +18,10 @@ export const useForm = ({ user }: Props ) => {
     const { handleSubmit, control, reset, setValue, getValues } = useReactForm<IFormInputs>({
     })
 
-    const onSubmit: SubmitHandler<IFormInputs> = async(data) => {
-        await updateProfile(data)
-        toast.success("Update Profile successfully!");
-    }
+    console.log({ user });
+
+
+    const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(data)
 
     useEffect(()=> {
         setValue('name', user?.name || "")
@@ -30,9 +30,9 @@ export const useForm = ({ user }: Props ) => {
     }, [JSON.stringify(user)])
 
     const handleChangeFile = async(e: ChangeEvent<HTMLInputElement>) => {
-        const avatar = e.target?.files[0]
+        const avatar = e.target?.files?.[0]
         const formData = new FormData()
-        formData.append("avatar", avatar);
+        formData.append("avatar", avatar || '');
         const res = await uploadFile(formData)
         const data = await res.json()
         await updateProfile({ avatar: data?.url || ""})

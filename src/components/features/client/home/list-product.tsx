@@ -1,80 +1,49 @@
 'use client'
 
-import { Product } from "../../../../../types/client/home"
+import { FC } from "react"
 import ProductCard from "./product-card"
+import { Product } from "@/utils/types/client/product"
 
-const ListProduct = () => {
-  const productsData: Product[] = [
+interface Props {
+  dict: any
+}
+
+const ListProduct: FC<Props> = ({ dict }) => {
+  const productsData = [
     {
       id: 1,
-      images: [
-        {
-          id: 1,
-          url: "/assets/img/collection-1.webp"
-        },
-        {
-          id: 2,
-          url: "/assets/img/collection-2.webp"
-        }],
+      imageUrl: "/assets/img/collection-1.webp",
       name: "Lorem Ipsum",
       quantity: 100,
       categoryId: 1,
       description: "Lorem Ipsum",
-      SKU: "sku123",
       price: 13.34,
     },
     {
       id: 2,
-      images: [
-        {
-          id: 1,
-          url: "/assets/img/collection-1.webp"
-        },
-        {
-          id: 2,
-          url: "/assets/img/collection-2.webp"
-        }],
+      imageUrl: "/assets/img/collection-2.webp",
       name: "Lorem Ipsum",
       description: "Lorem Ipsum",
       quantity: 100,
       categoryId: 1,
-      SKU: "sku123",
       price: 13.34,
     },
     {
       id: 3,
-      images: [
-        {
-          id: 1,
-          url: "/assets/img/collection-1.webp"
-        },
-        {
-          id: 2,
-          url: "/assets/img/collection-2.webp"
-        }],
+      imageUrl: "/assets/img/collection-1.webp",
       name: "Lorem Ipsum",
       quantity: 100,
       categoryId: 2,
       description: "Lorem Ipsum",
-      SKU: "sku123",
       price: 13.34,
     },
     {
       id: 4,
-      images: [
-        {
-          id: 1,
-          url: "/assets/img/collection-1.webp"
-        },
-        {
-          id: 2,
-          url: "/assets/img/collection-2.webp"
-        }],
+      imageUrl: "/assets/img/collection-2.webp",
       name: "Lorem Ipsum",
       quantity: 100,
       categoryId: 2,
       description: "Lorem Ipsum",
-      SKU: "sku123",
       price: 13.34,
     },
   ]

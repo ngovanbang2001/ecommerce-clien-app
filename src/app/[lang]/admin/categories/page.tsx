@@ -1,6 +1,6 @@
 'use client'
 
-import useDialog from '@/hooks/common/useDialog'
+import useDialog from '@/hooks/useDialog'
 import Button from '@/components/common/button/button'
 import CreateCategoryDialog from '@/components/features/admin/categories/create-category-dialog'
 import { AiFillDelete } from 'react-icons/ai'

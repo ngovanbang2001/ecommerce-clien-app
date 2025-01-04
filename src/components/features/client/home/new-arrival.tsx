@@ -1,9 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import React, { FC } from "react"
 
-const NewArrival = () => {
+interface Props {
+  dict: any
+}
 
+const NewArrival: FC<Props> = ({ dict }) => {
 
   return (
       <div className="relative group cursor-pointer xs:h-[360px] xl:h-[620px]">

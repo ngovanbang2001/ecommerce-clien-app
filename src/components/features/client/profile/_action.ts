@@ -1,5 +1,6 @@
-import { revalidateTag } from "next/cache"
-import { UpdateProfileRequest } from "../../../../../types/client/profile"
+'use client'
+
+import { UpdateProfileRequest } from "../../../../utils/types/client/profile"
 
 export async function updateProfile(data: UpdateProfileRequest) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/update`, {

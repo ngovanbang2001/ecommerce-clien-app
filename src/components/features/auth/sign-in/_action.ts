@@ -1,4 +1,4 @@
-import { SignInRequest } from "../../../../../types/auth"
+import { SignInRequest } from "../../../../utils/types/auth"
 
 export async function signIn(data: SignInRequest) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sign-in`, {
@@ -12,8 +12,9 @@ export async function signIn(data: SignInRequest) {
   })
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    const errorMessage = await res.text();
+    throw new Error(`Failed to fetch data: ${errorMessage}`); 
   }
 
-  return res
+  return res;
 }

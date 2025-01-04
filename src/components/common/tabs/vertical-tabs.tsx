@@ -1,5 +1,5 @@
 'use client'
-import { Tab } from '../../../../types/common'
+import { Tab } from '../../../utils/types/common'
 import ContentTab from './content'
 import useTab from './hooks/useTab'
 

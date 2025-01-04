@@ -12,12 +12,12 @@ const Home = async({ params: { lang } }: { params: { lang: string } }) => {
   
   return (
     <div>
-      <Slider />
-      <CollectionCard />
-      <ListProduct />
-      <NewArrival />
-      <Blog />
-      <Social />
+      <Slider dict={dict}/>
+      <CollectionCard dict={dict}/>
+      <ListProduct dict={dict}/>
+      <NewArrival dict={dict}/>
+      <Blog dict={dict}/>
+      <Social dict={dict}/>
     </div>
   );
 };

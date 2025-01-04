@@ -15,19 +15,3 @@ export type CollectionData = {
   alt: string
   title: string
 }
-
-export type Product = {
-  id: number
-  name: string
-  description: string
-  SKU: string
-  quantity: number
-  categoryId: number
-  images: ProductImage[]
-  price: number
-}
-
-export type ProductImage = {
-  id: number
-  url: string
-}

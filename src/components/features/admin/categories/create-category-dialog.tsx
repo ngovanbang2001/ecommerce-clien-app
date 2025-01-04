@@ -28,7 +28,6 @@ const CreateCategoryDialog = ({ isOpen, handleCloseDialog }: Props) => {
     try {
       const { name, image } = data
       const formData = new FormData();
-      console.log({  name , image });
       formData.append('name', name)
       formData.append('image', image)
       const res = await createCategoryApi(formData);

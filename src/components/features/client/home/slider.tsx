@@ -1,9 +1,10 @@
 'use client'
-import { BannerImage } from "../../../../../types/client/home"
-import { useState } from "react"
+import { BannerImage } from "../../../../utils/types/client/home"
+import { FC, useState } from "react"
 import { POSITION } from "./core/types"
 import Image from "next/image"
 import Link from "next/link"
+import { ROUTER_PATH } from "@/utils/constants"
 
 const datas: BannerImage[] = [
   {
@@ -32,7 +33,11 @@ const datas: BannerImage[] = [
   },
 ]
 
-const Slider = () => {
+interface Props {
+  dict: any
+}
+
+const Slider: FC<Props> = ({ dict }) => {
   const [selectedSlider, setSelectedSlider] = useState(0)
   const handleSelectSlider = (index: number) => {
     setSelectedSlider(index)
@@ -62,8 +67,8 @@ const Slider = () => {
             <h1 className="text-heading-slider">
               {headText}
             </h1>
-            <Link href="#" className="text-description text-gray-800 font-bold border-b-[2px] border-slate-900 w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
-              Shop now
+            <Link href={ROUTER_PATH.products.path} className="text-description text-gray-800 font-bold border-b-[2px] border-slate-900 w-[fit-content] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300">
+              {dict.shop_now}
             </Link>
           </div>
         </div>

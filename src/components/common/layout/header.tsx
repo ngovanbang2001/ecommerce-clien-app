@@ -1,4 +1,5 @@
 import User from '@/components/features/client/header/user'
+import { ROUTER_PATH } from '@/utils/constants'
 import Link from 'next/link'
 import { CiSearch } from 'react-icons/ci'
 import { CiShoppingCart } from 'react-icons/ci'
@@ -21,7 +22,7 @@ export default function Header({}: HeaderProps) {
             </li>
             <li className="px-[22px] my-auto">
               <Link
-                href="#"
+                href={ROUTER_PATH.products.path}
                 className="text-header py-2 uppercase  hover:border-b-[1px] hover:border-yellow-600 hover:text-yellow-600 ease-in-out duration-300"
               >
                 Shop

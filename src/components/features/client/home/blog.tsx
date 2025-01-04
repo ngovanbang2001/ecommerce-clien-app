@@ -1,9 +1,14 @@
-import { CollectionData } from "../../../../../types/client/home"
+import { CollectionData } from "../../../../utils/types/client/home"
 import Link from "next/link"
+import { FC } from "react";
 import { CiUser } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
 
-const Blog = () => {
+interface Props {
+  dict: any
+}
+
+const Blog: FC<Props> = ({ dict }) => {
   const collectionsData: CollectionData[] = [
     {
       id: 1,

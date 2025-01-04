@@ -1,10 +1,13 @@
-'use client'
-
-import { CollectionData } from "../../../../../types/client/home"
+import { CollectionData } from "../../../../utils/types/client/home"
 import Image from "next/image"
 import Link from "next/link"
+import { FC } from "react"
 
-const CollectionCard = () => {
+interface Props {
+  dict: any
+}
+
+const CollectionCard: FC<Props> = ({ dict }) => {
   const collectionsData: CollectionData[] = [
     {
       id: 1,

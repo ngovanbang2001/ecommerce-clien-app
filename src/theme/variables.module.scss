@@ -1,0 +1,27 @@
+//$mobile-width: 480px;
+$tablet-width: 768px;
+//$desktop-width: 1024px;
+$box-shadow: 0px 3px 6px #27347d29;
+$green-100: #F0FFF6;
+$green-300: #C8F8DB;
+$green-500:  #3DC674;
+$green-700: #349056;
+$green-900: #18442A;
+$grey-100: #F9FAFB;
+$grey-300: #DFE3E8;
+$grey-500: #9A9A98;
+$grey-700: #5D5D5B;
+$grey-900: #363634;
+
+:export {
+    lighter: $green-100;
+    light: $green-300;
+    less_dark: $green-500;
+    dark: $green-700;
+    darker: $green-900;
+    gray_100: $grey-100;
+    gray_300: $grey-300;
+    gray_500: $grey-500;
+    gray_700: $grey-700;
+    gray_900: $grey-900;
+}

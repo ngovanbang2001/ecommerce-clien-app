@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import { Tab } from "../../../../../types/common"
+import { Tab } from "../../../../utils/types/common"
 
 type Props = {
   tabs: Tab[]

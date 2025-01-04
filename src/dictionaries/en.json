@@ -1,5 +1,4 @@
 {
-  "products": {
-    "cart": "Add to Cart"
-  }
+    "add_to_cart": "Add to Cart",
+    "shop_now": "Shop now"
 }

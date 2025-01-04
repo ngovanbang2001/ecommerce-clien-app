@@ -1,5 +1,5 @@
 import axiosInstance from "@/apiClient";
-import { SignInRequest, SignUpRequest } from "../../types/auth";
+import { SignInRequest, SignUpRequest } from "../utils/types/auth";
 
 export function signUpApi({email, password, name, phoneNumber }: SignUpRequest) {
   return axiosInstance.post(`/sign-up`, { email, password, name, phoneNumber });
