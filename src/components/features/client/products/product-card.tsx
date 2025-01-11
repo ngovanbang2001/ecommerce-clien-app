@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC } from "react";
 
 interface Props {
@@ -24,7 +25,7 @@ const ProductCard: FC<Props> = ({
       </div>
 
       <div className="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
-        <img
+        <Image
           src="https://readymadeui.com/images/product9.webp"
           alt="Product 1"
           className="h-full w-full object-contain"
