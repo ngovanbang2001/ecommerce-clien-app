@@ -1,5 +1,5 @@
+import { User } from "@/utils/types";
 import { useEffect, useState } from "react";
-import { User } from "../../../../../utils/types/common";
 
 export const useInfo = () => {
     const [user, setUser] = useState<User>()

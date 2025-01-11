@@ -1,8 +1,9 @@
-import { Filter, Product } from "@/utils/types"
+import { Filter } from "@/utils/types"
 import { useEffect, useState } from "react"
 import { DefaultFilter } from "../configs/constants"
 import { toast } from "react-toastify"
 import useStateGlobal from "@/hooks/useStateGlobal"
+import { Product } from "@/utils/types/client/product"
 
 const useProduct = () => {
   const [products, setProducts] = useState<Product[]>([])
@@ -12,9 +13,9 @@ const useProduct = () => {
   const handleGetProductList = () => {
     setLoading(true)
     try {
-      setProducts()
-    } catch (error) {
-      toast.error(error)
+      // setProducts()
+    } catch (error: any) {
+      toast.error(error?.message || "");
     }
     setLoading(false)
   }

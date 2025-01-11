@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { Controller } from "react-hook-form"
-import useSignIn from "./_hooks/useSignIn"
+import useSignIn from "./hooks/useSignIn"
 
 const SignInForm = () => {
   const { handleSubmit, control, onSubmit, errors } = useSignIn()

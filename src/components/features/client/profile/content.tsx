@@ -6,10 +6,10 @@ import React from 'react'
 import VerticalTab from '@/components/common/tabs/vertical-tabs';
 import { FaCircleUser } from "react-icons/fa6";
 import { IoIosSettings } from "react-icons/io";
-import { Tab, User } from '../../../../utils/types/common';
 import { RiBillFill } from "react-icons/ri";
-import { useInfo } from './_hooks/useInfo';
-import UserTab from './_components/user-tab';
+import { useInfo } from './hooks/useInfo';
+import UserTab from './components/user-tab';
+import { User } from '@/utils/types';
 
 const Content = () => {
     const { user } = useInfo()

@@ -1,6 +1,6 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { SubmitHandler, useForm as useReactForm } from "react-hook-form";
-import { updateProfile, uploadFile } from "../_action";
+import { updateProfile, uploadFile } from "../action";
 import { toast } from "react-toastify";
 import { User } from "@/utils/types";
 

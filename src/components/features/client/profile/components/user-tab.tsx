@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { useForm } from "../_hooks/useForm";
+import { useForm } from "../hooks/useForm";
 import Image from "next/image";
 import { User } from "@/utils/types";
 

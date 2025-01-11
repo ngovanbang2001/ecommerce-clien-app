@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { FaCircleUser } from "react-icons/fa6";
 import { CiUser } from "react-icons/ci";
-import { useInfo } from "./_hooks/useInfo";
+import { useInfo } from "./hooks/useInfo";
 import { PiSignOut } from "react-icons/pi";
 
 type Props = {
