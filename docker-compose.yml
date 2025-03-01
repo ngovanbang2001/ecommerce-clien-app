@@ -1,9 +1,11 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  e-commerce:
-    container_name: e-commerce
-    image: e-commerce
-    build: .
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
+    container_name: ecommerce-client
+    restart: always

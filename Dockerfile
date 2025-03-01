@@ -1,16 +1,32 @@
-FROM node:20
+# Sử dụng image node phiên bản LTS làm base image
+FROM node:lts-alpine as build
 
+# Thiết lập thư mục làm việc
 WORKDIR /app
 
+# Sao chép package.json và package-lock.json
 COPY package*.json ./
 
+# Cài đặt các dependencies
 RUN npm install
 
+# Sao chép toàn bộ mã nguồn
 COPY . .
 
+# Build ứng dụng React
 RUN npm run build
-FROM nginx:1.21.3-alpine
+
+# Sử dụng image Nginx làm base image
+FROM nginx:alpine
+
+# Sao chép các file build từ stage trước vào thư mục phục vụ của Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Sao chép file cấu hình Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=0 /app/build /usr/share/nginx/html
+# Expose cổng 80
 EXPOSE 80
+
+# Khởi chạy Nginx
+CMD ["nginx", "-g", "daemon off;"]
