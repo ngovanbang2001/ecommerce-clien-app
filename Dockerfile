@@ -19,11 +19,11 @@ RUN npm run build
 # Sử dụng image Nginx làm base image
 FROM nginx:alpine
 
-# Sao chép các file build từ stage trước vào thư mục phục vụ của Nginx
-COPY --from=build /app/build /usr/share/nginx/html
-
 # Sao chép file cấu hình Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Sao chép các file build từ stage trước vào thư mục phục vụ của Nginx
+COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose cổng 80
 EXPOSE 80
