@@ -19,11 +19,12 @@ RUN npm run build
 # Sử dụng image Nginx làm base image
 FROM nginx:alpine
 
-# Sao chép file cấu hình Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=BUILD /app/public ./public
+COPY --from=BUILD /app/next.config.js ./
 
-# Sao chép các file build từ stage trước vào thư mục phục vụ của Nginx
-COPY --from=build /app/.next /usr/share/nginx/html
+# Set mode "standalone" in file "next.config.js"
+COPY --from=BUILD /app/.next/standalone ./
+COPY --from=BUILD /app/.next/static ./.next/static
 
 # Expose cổng 80
 EXPOSE 80
