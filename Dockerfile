@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 COPY --from=BUILD /app/public ./public
-COPY --from=BUILD /app/next.config.js ./
+COPY --from=BUILD /app/next.config.mjs ./
 
 # Set mode "standalone" in file "next.config.js"
 COPY --from=BUILD /app/.next/standalone ./
