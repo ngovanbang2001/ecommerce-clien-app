@@ -23,7 +23,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Sao chép các file build từ stage trước vào thư mục phục vụ của Nginx
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/.next /usr/share/nginx/html
 
 # Expose cổng 80
 EXPOSE 80
