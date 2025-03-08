@@ -1,31 +1,29 @@
-# Sử dụng image node phiên bản LTS làm base image
-FROM node:lts-alpine as build
+# Stage 1: Build application
+FROM node:18-alpine AS builder
 
-# Thiết lập thư mục làm việc
 WORKDIR /app
 
 # Sao chép package.json và package-lock.json
 COPY package*.json ./
+RUN npm ci
 
-# Cài đặt các dependencies
-RUN npm install
-
-# Sao chép toàn bộ mã nguồn
+# Sao chép source code
 COPY . .
 
-# Build ứng dụng React
+# Build ứng dụng Next.js
 RUN npm run build
 
-# Sử dụng image Nginx làm base image
+# Stage 2: Chạy với Nginx
 FROM nginx:alpine
 
+# Sao chép cấu hình nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY --from=build --chown=nginx:nginx /app/.next /usr/share/nginx/html
+# Sao chép các files đã build từ stage trước
+COPY --from=builder /app/.next/standalone /usr/share/nginx/html
+COPY --from=builder /app/.next/static /usr/share/nginx/html/_next/static
+COPY --from=builder /app/public /usr/share/nginx/html/public
 
-
-# Expose cổng 80
 EXPOSE 80
 
-# Khởi chạy Nginx
 CMD ["nginx", "-g", "daemon off;"]
