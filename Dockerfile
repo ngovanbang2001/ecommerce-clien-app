@@ -17,15 +17,15 @@ RUN npm run build
 FROM nginx:alpine
 
 # Sao chép cấu hình nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /app/.next /tmp/debug/.next
 COPY --from=builder /app/public /tmp/debug/public
 
 # Sao chép các files đã build từ stage trước - phương pháp thay thế
-COPY --from=builder /app/.next/standalone/. /usr/share/nginx/html/
-COPY --from=builder /app/.next/static /usr/share/nginx/html/_next/static
-COPY --from=builder /app/public /usr/share/nginx/html/public
+COPY --from=builder --chown=nginx:nginx /app/.next/standalone/. /usr/share/nginx/html/
+COPY --from=builder --chown=nginx:nginx /app/.next/static /usr/share/nginx/html/_next/static
+COPY --from=builder --chown=nginx:nginx /app/public /usr/share/nginx/html/public
 
 EXPOSE 80
 
