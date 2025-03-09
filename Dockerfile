@@ -17,7 +17,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Sao chép cấu hình nginx
-COPY --chown=nginx:nginx nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /app/.next /tmp/debug/.next
 COPY --from=builder /app/public /tmp/debug/public
