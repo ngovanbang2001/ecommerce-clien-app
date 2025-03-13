@@ -28,6 +28,7 @@ const ProductCard: FC<Props> = ({
         <Image
           src="https://readymadeui.com/images/product9.webp"
           alt="Product 1"
+          layout="fill"
           className="h-full w-full object-contain"
         />
       </div>

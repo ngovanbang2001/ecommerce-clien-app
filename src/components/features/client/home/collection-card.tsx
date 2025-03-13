@@ -33,7 +33,7 @@ const CollectionCard: FC<Props> = ({ dict }) => {
     <div className="grid grid-cols-3 gap-4 pt-[60px]">
       {collectionsData.map(({ id, title, url, alt }) => (
         <div className="relative group cursor-pointer" key={id}>
-          <Image className="!relative object-contain group-hover:blur-sm ease-in-out duration-300 h-full w-full" src={url} alt={alt} layout='fill' objectFit='cover' />
+          <Image className="!relative object-contain group-hover:blur-sm ease-in-out duration-300 h-full w-full" src={url} alt={alt} layout="fill" objectFit='cover' />
           <div className={`absolute z-2 flex flex-col gap-[20px] p-[40px] bottom-0 left-0`}>
             <h1 className="text-heading-card">
               {title}

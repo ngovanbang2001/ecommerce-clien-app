@@ -17,8 +17,8 @@ const ProductCard: FC<Props> = ({ product }) => {
   return (
     <div className="relative group cursor-pointer flex flex-col ease-in-out duration-300">
       <div className="relative">
-        <Image className="!relative ease-in-out group-hover:hidden duration-300" src={imageUrl} alt="" layout='fill' objectFit='cover' />
-        <Image className="!relative hidden group-hover:block  ease-in-out duration-300" src={imageUrl} alt="" layout='fill' objectFit='cover' />
+        <Image className="!relative ease-in-out group-hover:hidden duration-300" src={imageUrl} alt="" layout="fill" objectFit='cover' />
+        <Image className="!relative hidden group-hover:block  ease-in-out duration-300" src={imageUrl} alt="" layout="fill" objectFit='cover' />
         <div className="absolute justify-center gap-[8px] bottom-[-20px] hidden group-hover:flex w-full group-hover:bottom-[20px] ease-in-out duration-500">
           <div className="p-2 rounded-full bg-[#000]"><CiShoppingCart color="#FFF"/></div>
           <div className="p-2 rounded-full bg-[#000]"><CiHeart color="#FFF"/></div>

@@ -62,7 +62,7 @@ const Slider: FC<Props> = ({ dict }) => {
     <div className="relative">
       <div key={id} className={`w-full xs:h-[360px] xl:h-[670px] transition`}>
         <div className={`h-full w-full relative`}>
-          <Image className="ease-in-out duration-300 h-full w-full" layout='fill' objectFit='cover' src={url} alt={alt} />
+          <Image className="ease-in-out duration-300 h-full w-full" layout="fill" objectFit='cover' src={url} alt={alt} />
           <div className={`absolute z-1 flex flex-col gap-[24px] p-[24px] ${positionContent(position)}`}>
             <h1 className="text-heading-slider">
               {headText}

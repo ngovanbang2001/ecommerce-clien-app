@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Loading() {
-    // Or a custom loading skeleton component
     return (
         <div role="status" className="space-y-2.5 animate-pulse max-w-lg">
             <div className="flex items-center w-full">
