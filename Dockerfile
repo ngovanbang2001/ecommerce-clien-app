@@ -35,4 +35,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 EXPOSE 3000
 
 # Khởi chạy ứng dụng
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

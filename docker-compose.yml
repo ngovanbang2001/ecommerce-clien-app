@@ -1,27 +1,32 @@
-version: '3'
+version: '3.8'
 
 services:
-  app:
+  nextjs:  # Đảm bảo tên service này khớp với proxy_pass trong Nginx
     build:
       context: .
       dockerfile: Dockerfile
     container_name: nextjs-app
     restart: always
+    env_file:
+      - .env
     networks:
       - app-network
+    # Để debug, hãy thêm cổng để có thể kiểm tra ứng dụng trực tiếp
+    ports:
+      - "3001:3000"  # Map ra cổng khác để tránh xung đột
 
   nginx:
     image: nginx:alpine
-    container_name: nginx
-    ports:
-      - "3000:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./.next:/usr/share/nginx/html/_next
-      - ./public:/usr/share/nginx/html/public
-    depends_on:
-      - app
+    container_name: nginx-proxy
     restart: always
+    ports:
+      - "80:80"
+      - "443:443"  # Nếu bạn cấu hình SSL
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - nextjs
     networks:
       - app-network
 
