@@ -1,8 +1,8 @@
 'use client'
 
 import useDialog from '@/hooks/useDialog'
-import Button from '@/components/common/button/button'
-import CreateCategoryDialog from '@/components/features/admin/categories/create-category-dialog'
+import Button from '@/components/button/button'
+import CreateCategoryDialog from '@/containers/admin/categories/create-category-dialog'
 import { AiFillDelete } from 'react-icons/ai'
 import { BiSolidMessageSquareEdit } from 'react-icons/bi'
 import { IoIosAdd } from 'react-icons/io'

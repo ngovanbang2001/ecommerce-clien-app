@@ -25,3 +25,17 @@ export type Filter = {
   sortBy: any
   orderBy: OrderBy
 }
+
+export type Query = {
+    currentPage: number;
+    pageSize: number;
+    textSearch?: string;
+    totalPages?: number;
+    sortColumnDirection?: OrderBy;
+}
+export type PagingResponse = {
+    page: number;
+    limit: number;
+    totalItems: number;
+    totalPages: number;
+}

@@ -1,4 +1,4 @@
-import { POSITION } from "@/components/features/client/home/core/types"
+import { POSITION } from "@/containers/client/home/core/types"
 
 export type BannerImage = {
   id: number

@@ -1,4 +1,4 @@
-import SearchBar from "@/components/features/client/search/search-bar"
+import SearchBar from "@/containers/client/search/search-bar"
 
 const Page = () => {
     return (

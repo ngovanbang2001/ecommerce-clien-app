@@ -1,8 +1,8 @@
 
-import CommonBreadcrumb from '@/components/common/breadcumb/common-breadcrumb';
+import CommonBreadcrumb from '@/components/breadcumb/common-breadcrumb';
 import React from 'react'
 import { getDictionary } from '@/dictionaries';
-import Content from '@/components/features/client/profile/content';
+import Content from '@/containers/client/profile/content';
 
 const Page = async ({ params: { lang } }: { params: { lang: string } }) => {
   const dict = await getDictionary(lang)

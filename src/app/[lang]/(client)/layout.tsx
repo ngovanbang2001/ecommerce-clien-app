@@ -1,5 +1,5 @@
-import Footer from '@/components/common/layout/footer'
-import Header from '@/components/common/layout/header'
+import Footer from '@/components/layout/footer'
+import Header from '@/components/layout/header'
 
 import { Suspense } from 'react'
 import 'react-toastify/dist/ReactToastify.css'

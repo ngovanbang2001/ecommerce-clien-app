@@ -1,4 +1,4 @@
-import SignInForm from "@/components/features/auth/sign-in"
+import SignInForm from "@/containers/auth/sign-in"
 
 const SignIn = async({ params: { lang } }: { params: { lang: string } }) => {
 

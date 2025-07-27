@@ -1,10 +1,10 @@
-import Slider from '@/components/features/client/home/slider';
-import ListProduct from '@/components/features/client/home/list-product';
+import Slider from '@/containers/client/home/slider';
+import ListProduct from '@/containers/client/home/list-product';
 import React from 'react'
-import CollectionCard from '@/components/features/client/home/collection-card';
-import NewArrival from '@/components/features/client/home/new-arrival';
-import Blog from '@/components/features/client/home/blog';
-import Social from '@/components/features/client/home/social';
+import CollectionCard from '@/containers/client/home/collection-card';
+import NewArrival from '@/containers/client/home/new-arrival';
+import Blog from '@/containers/client/home/blog';
+import Social from '@/containers/client/home/social';
 import { getDictionary } from '@/dictionaries';
 
 const Home = async({ params: { lang } }: { params: { lang: string } }) => {
